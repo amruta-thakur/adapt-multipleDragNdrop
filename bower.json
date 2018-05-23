@@ -1,0 +1,21 @@
+{
+  "name": "adapt-multipleDragNdrop",
+  "version": "2.0.0",
+  "framework": "^2.0.0",
+  "authors": [
+    "Amruta Thakur <amruta.thakur@exultcorp.com>",
+    "Chetan Hajare <chetan.hajare@exultcorp.com>",
+    "Nayan Khedkar <Nayan.khedkar@exultcorp.com>",
+    "Sarveshwar Gavhane <sarveshwar.gavhane@exultcorp.com>",
+    "Prajakta Kitukale <prajakta.kitukale@exultcorp.com>"
+  ],
+  "description": "A basic drag and drop question component with multiple activities.",
+  "main": "/js/adapt-multipleDragNdrop.js",
+  "displayName" : "Multiple Drag And Drop",
+  "component" : "multipleDragNdrop",
+  "keywords": [
+    "adapt-plugin",
+    "adapt-component"
+  ],
+  "license": "GPLv3"
+}

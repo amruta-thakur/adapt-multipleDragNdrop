@@ -1,0 +1,148 @@
+.wordSentenceOrdering-component {
+    .wordSentenceOrdering-inner {
+        .wordSentenceOrdering-container {
+            vertical-align: top;
+            &.scale {
+                transform-origin: 0 0%;
+                -ms-transform-origin: 0 0%;
+                -moz-transform-origin: 0 0%;
+                -o-transform-origin: 0 0%;
+                -webkit-transform-origin: 0 0%;
+            }
+         .wordSentenceOrdering-item-container{
+            position: relative;
+            float: left;
+          }
+            &.draggables-container {
+                .draggable-item-wrapper {
+                    position: relative;
+                    display: block;
+                    margin: 0 auto 5px 5px;
+                    background-color: @item-color;
+                    text-align: center;
+                  .no-touch &:hover {
+                    cursor: pointer;
+                    color: @item-text-color-hover;
+                    background-color: @item-color-hover;
+                    border-color: @item-border-color-hover;
+                  }
+                    .draggable-item {
+                       width: 100%;
+                        display: block;
+                        width: inherit;
+                        height: inherit;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        text-decoration: none;
+                        text-align: center;
+                        color: @item-text-color;
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -12px;
+
+                    }
+                }
+            }
+        &.droppables-container {
+              display: inline-block;
+              float: left;
+              margin: 40px 0 5px;
+                  .wordSentenceOrdering-item{
+                    display: block;
+                    margin: 0 auto 2px 5px;
+                    background-color: darken(@item-color, 15%);
+                  }
+            .droppable-item a{
+              color: @item-text-color;
+              text-decoration: none;
+            }
+            .droppable-item-body-number{
+              width: 100%;
+              color: @item-text-color;
+              text-align: center;
+              position: absolute;
+              top: 50%;
+              left: 0px;
+              right: 0px;
+              padding: 0px;
+              margin: -12px auto;
+            }
+        }
+    }
+
+        .wordSentenceOrdering-dummy {
+            position: fixed;
+            z-index: 1;
+            padding: 0px 5px;
+            top: 0;
+            left: 0;
+            display: block;
+            cursor: pointer;
+            text-align: center;
+            color: @item-text-color;
+            background-color: darken(@primary-color,10%);
+        }
+    }
+    .wordSentenceOrdering-correct-icon {
+        color: @validation-success;
+        display: none;
+    }
+    .wordSentenceOrdering-incorrect-icon {
+        color: @validation-error;
+        display: none;
+    }
+    .wordSentenceOrdering-widget {
+        position: relative;
+        display: inline-block;
+        .wordSentenceOrdering-item-icon {
+            display: none;
+        }
+        &.show-user-answer {
+            .incorrect {
+                .wordSentenceOrdering-incorrect-icon {
+                    display: block;
+                }
+            }
+            .correct {
+                .wordSentenceOrdering-correct-icon {
+                    display: block;
+                }
+            }
+        }
+        &.show-correct-answer {
+            .wordSentenceOrdering-item-icon {
+                display: none;
+            }
+            .wordSentenceOrdering-correct-icon {
+                display: block;
+            }
+        }
+      .wordSentenceOrdering-item-state{
+        background:none;
+        position:absolute;
+        right:-3px;
+        text-align: right;
+    /*    .dir-rtl & {
+          left:inherit;
+          right:10px;
+        }*/
+        width:@icon-size;
+        height:@icon-size;
+        top:50%;
+        margin-top:-(@icon-size/2);
+        z-index:0;
+
+      }
+
+        &.disabled {
+            .draggable-item {
+                .no-touch &:hover {
+                    cursor: default;
+                }
+            }
+        }
+    }
+}
+

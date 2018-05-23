@@ -1,0 +1,57 @@
+<div class="textPictureMatching-inner component-inner" role="region" aria-label="{{_globals._components.textPictureMatching.ariaRegion}}" {{#if _globals._components.textPictureMatching.ariaRegion}}tabindex="0"{{/if}}>
+
+    {{> component this}}
+    <div class="textPictureMatching-widget component-widget {{#unless _isEnabled}} disabled {{#if _isInteractionComplete}} complete submitted show-user-answer {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}">
+        <div class="textPictureMatching-container draggables-container{{#if _shouldScale}} scale{{/if}} {{#if _isVertical}} textPictureMatching-component-vertical{{/if}}">
+            {{#each _draggableItems}}
+            <div class="textPictureMatching-item-container draggable-item-container">
+                <div class="draggable-item-wrapper" style="width:{{../_defaultWidth}}px; height:{{../_defaultHeight}}px;" >
+                    <a href="#" class="textPictureMatching-item draggable-item component-item component-item-color item-{{@index}}" data-id="{{id}}" index={{@index}}>
+                        {{#if body}}
+                        <div class="textPictureMatching-item-body draggable-item-body">
+                            <div class="textPictureMatching-item-body-inner draggable-item-body-inner">
+                                {{{body}}}
+                            </div>
+                        </div>
+                        {{/if}}
+                    </a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="textPictureMatching-container droppables-container{{#if _shouldScale}} scale{{/if}} {{#if _isVertical}} textPictureMatching-component-vertical{{/if}}">
+            {{#each _droppableItems}}
+            <div class="textPictureMatching-item-container droppable-item-container">
+                <div class="textPictureMatching-item droppable-item{{#unless ../_isEnabled}} {{#if _isCorrect}} correct{{else}} incorrect{{/if}} {{/unless}}" style="width:{{../_defaultWidth}}px; height:{{../_defaultHeight}}px;" >
+                    {{#if _graphic}}
+                    {{#if _graphic.src}}
+                    <div class="textPictureMatching-item-graphic droppable-item-graphic">
+                        <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}" tabindex="0">
+                    </div>
+                    {{/if}}
+                    {{/if}}
+                    <div class="textPictureMatching-item-area droppable-item-area" data-id="{{id}}" index={{@index}}>
+                        {{#if body}}
+                        <div class="textPictureMatching-item-body droppable-item-body">
+                            <div class="textPictureMatching-item-body-inner droppable-item-body-inner">
+                                {{{body}}}
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    {{!-- {{#if ../_canShowModelAnswer}} --}}
+                    <div class="textPictureMatching-item-state">
+                        <div class="textPictureMatching-item-icon textPictureMatching-correct-icon icon icon-tick"></div>
+                        <div class="textPictureMatching-item-icon textPictureMatching-incorrect-icon icon icon-cross"></div>
+                    </div>
+
+                    {{!-- {{/if}} --}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="textPictureMatching-dummy display-none" style="width:{{_defaultWidth}}px; height:{{_defaultHeight}}px;"></div>
+    </div>
+    <div class="buttons">
+    </div>
+</div>

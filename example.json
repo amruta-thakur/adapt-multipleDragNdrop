@@ -1,0 +1,492 @@
+//Drag and Drop for the text picture matching
+{
+    "_id": "c-155",
+    "_parentId": "b-115",
+    "_type": "component",
+    "_component": "multipleDragNdrop",
+    "_classes": "",
+    "_layout": "full",
+    "_attempts": 2,
+    "_shouldDisplayAttempts": false,
+    "_questionWeight": 1,
+    "_itemWeight": 1,
+    "_isRandom": false,
+    "_isEnabled": true,
+    "_canShowModelAnswer": true,
+    "_recordInteraction": true,
+    "title": "Basic Drag and Drop Component",
+    "displayTitle": "Basic Drag and Drop Component",
+    "body": "This is a basic drag and drop question component.",
+    "instruction": "",
+    "_dragAndDropType":"textPictureMatching",
+    "_isVertical": true,
+    "_defaultWidth": 120,
+    "_defaultHeight": 120,
+    "_shouldScale": true,
+    "_draggableItems": [
+        {
+          "id": "drag-1",
+          "body": "A body"
+        },
+        {
+          "id": "drag-2",
+          "body": "B body"
+        },
+        {
+          "id": "drag-3",
+          "body": "C body"
+        },
+        {
+          "id": "drag-4",
+          "body": "D body"
+        }
+      ],
+      "_droppableItems": [
+        {
+          "id": "drop-1",
+          "body": "John A body",
+          "_graphic": {
+            "src": "course/en/images/KC_DandD_Symbology_small4B.png",
+            "alt": "KC_DandD_Symbology_small4B"
+          },
+          "correctItemId": "drag-1"
+        },
+        {
+          "id": "drop-2",
+          "body": "Jenny B body",
+          "_graphic": {
+            "src": "course/en/images/KC_DandD_Symbology_small2B.png",
+            "alt": "KC_DandD_Symbology_small2B"
+          },
+          "correctItemId": "drag-2"
+        },
+        {
+          "id": "drop-3",
+          "body": "Jasmin C body",
+          "_graphic": {
+            "src": "course/en/images/KC_DandD_Symbology_small1B.png",
+            "alt": "KC_DandD_Symbology_small1B"
+          },
+          "correctItemId": "drag-3"
+        },
+        {
+          "id": "drop-4",
+          "body": "Johnson D body",
+          "_graphic": {
+            "src": "course/en/images/KC_DandD_Symbology_small3B.png",
+            "alt": "KC_DandD_Symbology_small3B"
+          },
+          "correctItemId": "drag-4"
+        }
+      ],
+    "_feedback": {
+      "correct": "Congratulations, this is the correct feedback.",
+      "_incorrect": {
+        "notFinal": "",
+        "final": "This feedback will appear if you answered the question incorrectly."
+      },
+      "_partlyCorrect": {
+        "notFinal": "",
+        "final": "This feedback will appear if you answered the question partially correct."
+      }
+    },
+    "_buttons": {
+      "_submit": {
+        "buttonText": "Submit",
+        "ariaLabel": "Select here to submit your answer."
+      },
+      "_reset": {
+        "buttonText": "Reset",
+        "ariaLabel": ""
+      },
+      "_showCorrectAnswer": {
+        "buttonText": "Correct Answer",
+        "ariaLabel": ""
+      },
+      "_hideCorrectAnswer": {
+        "buttonText": "My Answer",
+        "ariaLabel": ""
+      },
+      "_showFeedback": {
+        "buttonText": "Show feedback",
+        "ariaLabel": ""
+      },
+      "remainingAttemptsText": "attempts remaining",
+      "remainingAttemptText": "final attempt"
+    },
+    "_pageLevelProgress": {
+      "_isEnabled": true
+    }
+  }
+
+//Drag and drop for fill in the blanks
+  {
+    "_id": "c-160",
+    "_parentId": "b-120",
+    "_type": "component",
+    "_component": "multipleDragNdrop",
+    "_classes": "",
+    "_layout": "full",
+    "title": "Basic Drag and Drop Component",
+    "displayTitle": "Basic Drag and Drop Component",
+    "body": "This is a basic drag and drop question component.",
+    "instruction": "",
+    "_attempts": 2,
+    "_shouldDisplayAttempts": false,
+    "_shouldScale":false,
+    "_questionWeight": 1,
+    "_itemWeight": 1,
+    "_isRandom": false,
+    "_canShowModelAnswer": true,
+    "_canShowFeedback": true,
+    "_recordInteraction": true,
+    "_dragAndDropType":"fillInTheBlank",
+    "_defaultWidth":73,
+      "_defaultHeight": 23,
+    "_buttons": {
+      "_submit": {
+        "buttonText": "Submit",
+        "ariaLabel": "Select here to submit your answer."
+      },
+      "_reset": {
+        "buttonText": "Reset",
+        "ariaLabel": ""
+      },
+      "_showCorrectAnswer": {
+        "buttonText": "Correct Answer",
+        "ariaLabel": ""
+      },
+      "_hideCorrectAnswer": {
+        "buttonText": "My Answer",
+        "ariaLabel": ""
+      },
+      "_showFeedback": {
+        "buttonText": "Show feedback",
+        "ariaLabel": ""
+      },
+      "remainingAttemptsText": "attempts remaining",
+      "remainingAttemptText": "final attempt"
+    },
+    "_feedback": {
+      "correct": "This feedback will appear if you answered the question correctly.",
+      "_incorrect": {
+          "notFinal": "",
+          "final": "This feedback will appear if you answered the question incorrectly."
+      },
+      "_partlyCorrect": {
+          "notFinal": "",
+          "final": "This feedback will appear if you answered part of the question incorrectly."
+      }
+    },
+    "_items": [
+      {
+        "prefix": "",
+        "suffix":  [
+            {"p":"<b>1. </b> ","id":"drop-1","s":"<i>[x:1] du bitte kommen?</i> <br/><i>Ja, ich komme gleich.</i>","correctItemId":"drag-1"},
+            {"p":"<b>2. </b> ","id":"drop-2","s":"<i>[x:2] Sie Deutsch sprechen?</i> <br/><i>Ja, ein bisschen.</i>","correctItemId":"drag-2"},
+            {"p":"<b>3. </b> Matthias","id":"drop-3","s":"nicht gut kochen.","correctItemId":"drag-3"}
+         ],
+        "dragItems":[
+          {"id":"drag-1","text":"<i>kannst</i>"},
+          {"id":"drag-2","text":"<i>können</i>"},
+          {"id":"drag-3","text":"<i>kann</i>"},
+          {"id":"drag-4","text":"<i>können</i>"},
+          {"id":"drag-5","text":"<i>kann</i>"}
+        ]
+      }
+    ]
+  },
+
+  {
+    "_id": "c-165",
+    "_parentId": "b-125",
+    "_type": "component",
+    "_component": "multipleDragNdrop",
+    "_classes": "",
+    "_layout": "full",
+    "title": "Basic Drag and Drop Component",
+    "displayTitle": "Basic Drag and Drop Component",
+    "body": "This is a basic drag and drop question component.",
+    "instruction": "",
+    "_attempts": 2,
+    "_shouldDisplayAttempts": false,
+    "_shouldScale":false,
+    "_questionWeight": 1,
+    "_itemWeight": 1,
+    "_isRandom": false,
+    "_canShowModelAnswer": true,
+    "_canShowFeedback": true,
+    "_recordInteraction": true,
+    "_dragAndDropType":"fillInTheBlank",
+    "_defaultWidth":80,
+      "_defaultHeight": 23,
+    "_buttons": {
+      "_submit": {
+        "buttonText": "Submit",
+        "ariaLabel": "Select here to submit your answer."
+      },
+      "_reset": {
+        "buttonText": "Reset",
+        "ariaLabel": ""
+      },
+      "_showCorrectAnswer": {
+        "buttonText": "Correct Answer",
+        "ariaLabel": ""
+      },
+      "_hideCorrectAnswer": {
+        "buttonText": "My Answer",
+        "ariaLabel": ""
+      },
+      "_showFeedback": {
+        "buttonText": "Show feedback",
+        "ariaLabel": ""
+      },
+      "remainingAttemptsText": "attempts remaining",
+      "remainingAttemptText": "final attempt"
+    },
+    "_feedback": {
+      "correct": "This feedback will appear if you answered the question correctly.",
+      "_incorrect": {
+          "notFinal": "",
+          "final": "This feedback will appear if you answered the question incorrectly."
+      },
+      "_partlyCorrect": {
+          "notFinal": "",
+          "final": "This feedback will appear if you answered part of the question incorrectly."
+      }
+    },
+    "_items": [
+      {
+        "prefix": "",
+        "suffix":  [
+            {"p":"<i>State of silver at room temperature is</i>","id":"drop-1","s":"<i>solid, liquid, or gas; melting point is</i>","correctItemId":"drag-1"},
+            {"p":"","id":"drop-2","s":"<i>0C,  is soluble in sulfuric acid</i>","correctItemId":"drag-5"},
+            {"p":"","id":"drop-3","s":"<i>yes or no, and density is</i>","correctItemId":"drag-7"},
+            {"p":"","id":"drop-4","s":"<i>g/cm-3</i>","correctItemId":"drag-4"}
+         ],
+        "dragItems":[
+          {"id":"drag-1","text":"solid"},
+      {"id":"drag-2","text":"liquid"},
+      {"id":"drag-3","text":"gas"},
+      {"id":"drag-4","text":"10.49"},
+      {"id":"drag-5","text":"962"},
+      {"id":"drag-6","text":"no"},
+      {"id":"drag-7","text":"yes"}
+        ]
+      }
+    ]
+  }
+//drag and drop for word sentence ordering
+  {
+  "_id": "c-160",
+  "_parentId": "b-120",
+  "_type": "component",
+  "_component": "multipleDragNdrop",
+  "_classes": "",
+  "_layout": "full",
+  "title": "Word Sentence Ordering Component",
+  "displayTitle": "Word Sentence Ordering Component",
+  "body": "This is a basic drag and drop question component.",
+  "instruction": "Drag and drop the words in the correct order to create complete sentences.",
+  "_attempts": 1,
+  "_shouldDisplayAttempts": false,
+  "_questionWeight": 1,
+  "_itemWeight":1,
+  "_isRandom": true,
+  "_canShowModelAnswer": true,
+  "_recordInteraction": true,
+  "_defaultWidth": 120,
+  "_defaultHeight": 40,
+   "_shouldScale": false,
+  "_dragAndDropType":"wordSentenceOrdering",
+  "_sentence":"exult infosolution private limited",
+  "_buttons": {
+    "_submit": {
+      "buttonText": "Submit",
+      "ariaLabel": "Select here to submit your answer."
+    },
+    "_reset": {
+      "buttonText": "Reset",
+      "ariaLabel": ""
+    },
+    "_showCorrectAnswer": {
+      "buttonText": "Correct Answer",
+      "ariaLabel": ""
+    },
+    "_hideCorrectAnswer": {
+      "buttonText": "My Answer",
+      "ariaLabel": ""
+    },
+    "_showFeedback": {
+      "buttonText": "Show feedback",
+      "ariaLabel": ""
+    },
+    "remainingAttemptsText": "attempts remaining",
+    "remainingAttemptText": "final attempt"
+  },
+  "_feedback": {
+    "correct": "This feedback will appear if you answered the question correctly.",
+    "_incorrect": {
+        "notFinal": "",
+        "final": "This feedback will appear if you answered the question incorrectly."
+    },
+    "_partlyCorrect": {
+        "notFinal": "",
+        "final": "This feedback will appear if you answered part of the question correctly."
+    }
+  }
+}
+
+//sorting for sentence ordering
+  {
+    "_id": "c-155",
+    "_parentId": "b-115",
+    "_type": "component",
+    "_component": "multipleDragNdrop",
+    "_classes": "",
+    "_layout": "full",
+    "title": "Basic Drag and Drop Component",
+    "displayTitle": "Basic Drag and Drop Component",
+    "body": "This is a basic drag and drop question component.",
+    "instruction": "",
+    "_attempts": 2,
+    "_shouldDisplayAttempts": false,
+    "_questionWeight": 1,
+    "_itemWeight": 1,
+    "_isRandom": true,
+    "_canShowModelAnswer": true,
+    "_recordInteraction": true,
+    "_shouldScale":false,
+    "_defaultWidth": 860,
+    "_dragAndDropType":"sentenceOrdering",
+    "_buttons": {
+      "_submit": {
+        "buttonText": "Submit",
+        "ariaLabel": "Select here to submit your answer."
+      },
+      "_reset": {
+        "buttonText": "Reset",
+        "ariaLabel": ""
+      },
+      "_showCorrectAnswer": {
+        "buttonText": "Correct Answer",
+        "ariaLabel": ""
+      },
+      "_hideCorrectAnswer": {
+        "buttonText": "My Answer",
+        "ariaLabel": ""
+      },
+      "_showFeedback": {
+        "buttonText": "Show feedback",
+        "ariaLabel": ""
+      },
+      "remainingAttemptsText": "attempts remaining",
+      "remainingAttemptText": "final attempt"
+    },
+    "_feedback": {
+      "correct": "This feedback will appear if you answered the question correctly.",
+      "_incorrect": {
+          "notFinal": "",
+          "final": "This feedback will appear if you answered the question incorrectly."
+      },
+      "_partlyCorrect": {
+          "notFinal": "",
+          "final": "This feedback will appear if you answered part of the question correctly."
+      }
+    },
+    "_items":[
+         {
+            "id" : 1,
+            "questionSentence":{
+              "title":"<i>Marco Marco</i>"
+              },
+            "answerSentence":{
+              "name" : "<b>First Sentence.First Sentence.First Sentence.</b>"
+              },
+            "position":[1]
+         },{
+            "id" : 2,
+            "questionSentence":{
+              "title":"Recepcionista"
+              },
+            "answerSentence":{
+              "name" : "Second Sentence."
+              },
+            "position":[2]
+         },{
+            "id" : 3,
+            "questionSentence":{
+              "title":"Marco"
+            },
+            "answerSentence":{
+               "name" : "Third Sentence."
+            },
+            "position":[3]
+          }, {
+            "id" : 4,
+             "questionSentence":{
+              "title":"Recepcionista"
+            },
+            "answerSentence":{
+              "name" : "Fourth Sentence."
+            },
+            "position":[4]
+          }, {
+            "id" : 5,
+            "questionSentence":{
+              "title":"Marco"
+            },
+            "answerSentence":{
+                "name" : "Fifth Sentence."
+            },
+            "position":[5]
+          }, {
+            "id" : 6,
+             "questionSentence":{
+              "title":"Recepcionista"
+            },
+            "answerSentence":{
+              "name" : "Sixth Sentence."
+            },
+            "position":[6]
+          }
+          , {
+            "id" : 7,
+             "questionSentence":{
+              "title":"Recepcionista"
+            },
+            "answerSentence":{
+              "name" : "Seventh Sentence."
+            },
+            "position":[7]
+          }
+          , {
+            "id" : 8,
+             "questionSentence":{
+              "title":"Recepcionista"
+            },
+            "answerSentence":{
+              "name" : "Eigth Sentence."
+            },
+            "position":[8]
+          }, {
+            "id" : 9,
+             "questionSentence":{
+              "title":"Recepcionista"
+            },
+            "answerSentence":{
+              "name" : "Ninth Sentence."
+            },
+            "position":[9]
+          }, {
+            "id" : 10,
+             "questionSentence":{
+              "title":"Recepcionista"
+            },
+            "answerSentence":{
+              "name" : "Tenth Sentence."
+            },
+            "position":[10]
+          }
+         ]
+  }

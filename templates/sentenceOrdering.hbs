@@ -1,0 +1,29 @@
+<div class="sentenceOrdering-inner component-inner" role="region" aria-label="{{_globals._components.sentenceOrdering.ariaRegion}}" {{#if _globals._components.sentenceOrdering.ariaRegion}}tabindex="0"{{/if}} id="scaleableWrapper">
+    {{> component this}}
+    <div class="sentenceOrdering-widget component-widget {{#unless _isEnabled}} disabled {{#if _isInteractionComplete}} complete submitted show-user-answer {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}" id="innerWrapper" {{#if _shouldScale}} style="width:{{_defaultWidth}}px;"{{/if}}>
+        <div class="sentenceOrdering-container-inner">
+            <div class="container">
+                <div id="question" class="question-container">
+                    {{#each _items}}
+                        <div class="questionTitle">{{{questionSentence.title}}}({{{math @index '+' 1}}})</div>
+                    {{/each}}
+                </div>
+                <div class="sentence-container">
+                    <ul class="content list" id="sortable" style="list-style:none;">
+                        {{#each _shuffleItems}}
+                            <li id="{{id}}" class="sentenceSequence" tabindex="0"><span>{{{answerSentence.name}}}</span>
+                             <div class="sentenceOrdering-item-state {{#unless ../_isEnabled}} {{#if _isCorrect}} correct{{else}} incorrect{{/if}} {{/unless}}">
+                                    <div class="sentenceOrdering-item-icon sentenceOrdering-correct-icon icon icon-tick"></div>
+                                    <div class="sentenceOrdering-item-icon sentenceOrdering-incorrect-icon icon icon-cross"></div>
+                             </div>
+                           </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+    </div>
+</div>

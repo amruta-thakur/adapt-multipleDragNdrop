@@ -1,0 +1,46 @@
+<div class="fillInTheBlank-inner component-inner" role="region" aria-label="{{_globals._components._multipleDragNdrop.ariaRegion}}" {{#if _globals._components._multipleDragNdrop.ariaRegion}}tabindex="0"{{/if}}>
+
+    {{> component this}}
+    <div class="fillInTheBlank-widget component-widget{{#unless _isEnabled}} disabled {{#if _isInteractionComplete}} complete submitted show-user-answer {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}">
+
+        <div class="fillInTheBlank-container draggable-container">
+            {{#each _items}}
+            <div class="fillInTheBlank-item-container draggable-item-container">
+                <div class="draggable-item-wrapper" style="width:{{../_defaultWidth}}px; height:{{../_defaultHeight}}px;">
+                    {{#each dragItems}}
+                    <div class="fillInTheBlank-draggable-item draggable-item item-{{@index}}" data-id="{{id}}"  index={{@index}}>{{{text}}}</div>
+                    {{/each}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="fillInTheBlank-container droppable-container">
+            {{#each _items}}
+            <div class="fillInTheBlank-item-container droppable-item-container">
+                {{#if prefix}}
+                <div class="fillInTheBlank-prefix fillInTheBlank-text">{{{prefix}}}</div>
+                {{/if}}
+
+                {{#each suffix}}
+                <!--ADDED 'P' OR PREFIX' HERE-->
+                <div class="suffix" style="position:relative; float:left;">
+                    <span class="fillInTheBlank-textbox-alignment">{{{p}}}&nbsp;</span>
+                    <div id="input{{id}}" placeholder="{{placeholder}}" class="fillInTheBlank-textbox input-text-box droppable-item item-{{@index}} {{#unless ../../_isEnabled}} {{#if _isCorrect}}3 correct{{else}}4 incorrect{{/if}} {{/unless}} " data-id="{{id}}" index={{@index}} style="min-width:{{../../_defaultWidth}}px; height:{{../../_defaultHeight}}px;">
+                        <div class="fillInTheBlank-item-state">
+                            <div class="fillInTheBlank-item-icon fillInTheBlank-correct-icon icon icon-tick"></div>
+                            <div class="fillInTheBlank-item-icon fillInTheBlank-incorrect-icon icon icon-cross"></div>
+                        </div>
+                    </div>
+                    <span class="fillInTheBlank-textbox-alignment">{{{s}}}</span>
+                </div>
+                {{/each}}
+            </div>
+            {{/each}}
+        </div>
+        
+        <div class="fillInTheBlank-dummy display-none" style="width:{{_defaultWidth}}px; height:{{_defaultHeight}}px;"></div>
+    </div>
+
+    <div class="buttons">
+    </div>
+</div>

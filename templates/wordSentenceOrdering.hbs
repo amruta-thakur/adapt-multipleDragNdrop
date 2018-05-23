@@ -1,0 +1,41 @@
+<div class="wordSentenceOrdering-inner component-inner" role="region" aria-label="{{_globals._components._wordSentenceOrdering.ariaRegion}}" {{#if _globals._components._wordSentenceOrdering.ariaRegion}}tabindex="0"{{/if}}>
+    {{> component this}}
+    <div class="wordSentenceOrdering-widget component-widget {{#unless _isEnabled}} disabled {{#if _isInteractionComplete}} complete submitted show-user-answer {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}">
+        <div class="wordSentenceOrdering-container draggables-container{{#if _shouldScale}} scale{{/if}}">
+            {{#each _draggableItems}}
+            <div class="wordSentenceOrdering-item-container draggable-item-container">
+
+                <div class="draggable-item-wrapper" style="width:{{../_defaultWidth}}px; height:{{../_defaultHeight}}px;" >
+                    <a href="#" class="wordSentenceOrdering-item draggable-item component-item component-item-color item-{{@index}}" data-id="{{id}}" index={{@index}}>
+
+                                {{{body}}}
+                    </a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="wordSentenceOrdering-container droppables-container{{#if _shouldScale}} scale{{/if}}">
+            {{#each _droppableItems}}
+            <div class="wordSentenceOrdering-item-container droppable-item-container {{#unless ../_isEnabled}} {{#if _isCorrect}} correct{{else}} incorrect{{/if}} {{/unless}}">
+                <div class="wordSentenceOrdering-item" style="width:{{../_defaultWidth}}px; height:{{../_defaultHeight}}px;" >
+
+                   {{#if body}}
+                    <div class="wordSentenceOrdering-item-body droppable-item-body">
+                        <div class="wordSentenceOrdering-item-body-inner droppable-item-body-inner">
+                          <div class="droppable-item-body-number droppable-item" data-id="{{id}}" index={{@index}}>{{body}}</div>
+                          </div>
+                    </div>
+                   {{/if}}
+                  </div>
+                  <div class="wordSentenceOrdering-item-state">
+                    <div class="wordSentenceOrdering-item-icon wordSentenceOrdering-correct-icon icon icon-tick"></div>
+                    <div class="wordSentenceOrdering-item-icon wordSentenceOrdering-incorrect-icon icon icon-cross"></div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="wordSentenceOrdering-dummy dragAndDrop-dummy display-none" style="width:{{_defaultWidth}}px; height:{{_defaultHeight}}px;"></div>
+    </div>
+    <div class="buttons">
+    </div>
+</div>
