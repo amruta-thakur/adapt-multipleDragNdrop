@@ -82,7 +82,7 @@ define([
 
         setDraggableDummy: function() {
             var defaultHeight = this.model.get('_defaultHeight');
-            var draggableDummyPadding = defaultHeight / 2 - 10 + 'px'; //console.log(this.model.get('_dragAndDropType')+" aaaa "+draggableDummyPadding);
+            var draggableDummyPadding = defaultHeight / 2 - 10 + 'px';
             this.$('.' + this.model.get('_dragAndDropType') + '-dummy').css({
                 'padding-top': draggableDummyPadding,
                 'height': (defaultHeight / 2 + 10 + 'px')
@@ -100,7 +100,9 @@ define([
             var ObjectMatching = Adapt.componentStore.objectMatching;
 
             var model = this.prepareObjectMatchingModel();
-            var newObjectMatching = new ObjectMatching({ model: model });
+            var newObjectMatching = new ObjectMatching({
+                model: model
+            });
             var $container = $(".component-container", $("." + this.model.get("_parentId")));
 
             newObjectMatching.reRender();
@@ -231,7 +233,7 @@ define([
             var currentDragedItemId = this.model.get('_currentDragedItemId');
             var droppableItemId = this.getDropedItemIdForCoordinate(event.pageY, event.pageX);
 
-            if (currentDragedItemId && droppableItemId) { //console.log(droppableItemId);
+            if (currentDragedItemId && droppableItemId) {
                 this.putDraggableItem(this.model.get('_currentDragedItemId'), droppableItemId);
                 this.setSelectedItem(droppableItemId);
             }
@@ -330,7 +332,7 @@ define([
                 if (item.id == itemId) {
                     item._isSelected = true;
                 }
-            }); //console.log(droppableItems);
+            });
         },
 
         getDropedItemIdForCoordinate: function(top, left) {
@@ -417,7 +419,6 @@ define([
             this.isCorrect();
             var userAnswer = [];
             var items = this.model.get('_droppableItems').slice(0);
-            console.log(items);
             items.sort(function(a, b) {
                 return a._index - b._index;
             });
@@ -543,8 +544,8 @@ define([
                 item._selectedItemId = "drag-" + userDraggedId[item._index];
                 this.setdroppableItems(index, item._selectedItemId);
             }, this);
-            
-            this.model.set("_selectedItems", userDraggedId); 
+
+            this.model.set("_selectedItems", userDraggedId);
 
             this.setQuestionAsSubmitted();
             this.markQuestion();
@@ -559,7 +560,7 @@ define([
          */
         getResponse: function() {
             return _.pluck(this.model.get('_droppableItems'), '_selectedItemId').join(',');
-       
+
         },
 
         /**
