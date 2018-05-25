@@ -1,7 +1,8 @@
-define(function(require) {
-    var Utils = require('components/adapt-multipleDragNdrop/js/utils/utils');
-    var QuestionView = require('coreViews/questionView');
-    var Adapt = require('coreJS/adapt');
+define([
+    'coreJS/adapt',
+    'coreViews/questionView',
+    'components/adapt-multipleDragNdrop/js/utils/utils'
+], function(Adapt, QuestionView, Utils) {
     var WordSentenceOrdering = Utils.extend({
 
         // should be used instead of preRender

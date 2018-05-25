@@ -1,16 +1,16 @@
-define(function(require) {
-    var QuestionView = require('coreViews/questionView'),
-        Adapt = require('coreJS/adapt'),
-        SortableLib = require('components/adapt-multipleDragNdrop/js/utils/sortable');
+define([
+    'coreJS/adapt',
+    'coreViews/questionView',
+    'components/adapt-multipleDragNdrop/js/utils/sortable'
+], function(Adapt, QuestionView, SortableLib) {
     var SentenceOrdering = QuestionView.extend({
-        events: {
-            //"click .buttons-action": "onSubmit"
-        },
+
         setupQuestion: function() {
             this.listenTo(Adapt, 'device:resize', this.resizeItems, 200);
             this.restoreUserAnswers();
             this.setupRandomisation();
         },
+
         setupRandomisation: function() {
             if (this.model.get('_isRandom') && !this.model.get("_isSubmitted")) {
                 this.model.set("_shuffleItems", _.shuffle(this.model.get("_items")));
@@ -18,6 +18,7 @@ define(function(require) {
                 this.model.set("_shuffleItems", this.model.get("_items"));
             }
         },
+
         // used just like postRender is for presentational components
         onQuestionRendered: function() {
             this.model.set('_sortableItems', this.$('#sortable').html());
@@ -28,7 +29,6 @@ define(function(require) {
                 this.model.set({
                     '_userAnswerListElement': this.$('#sortable').html()
                 });
-
             }
             this.sortSentenceInitialize();
             this.setHeight();
@@ -53,6 +53,7 @@ define(function(require) {
                 $("li.placeholder").css('height', ui.item.height() + 'px');
             });
         },
+
         setDefaultHeight: function() {
             //set default height
             var sentenceOrderingContainers = this.$('.questionTitle ,.sentenceSequence');
@@ -61,6 +62,7 @@ define(function(require) {
             });
             this.setHeight();
         },
+
         setHeight: function() {
             var prefix = this.$('.questionTitle'),
                 sentence = this.$('.sentenceSequence'),
@@ -82,6 +84,7 @@ define(function(require) {
                 }
             }
         },
+
         resizeItems: function() {
             if (this.model.get("_shouldScale")) {
                 var $el = this.$("#innerWrapper"),
@@ -119,25 +122,30 @@ define(function(require) {
                 this.setDefaultHeight();
             }
         },
+
         disableQuestion: function() {
             this.$("#sortable").sortable({
                 disabled: true
             });
         },
+
         enableQuestion: function() {
             this.$("#sortable").sortable({
                 disabled: false
             });
         },
+
         canSubmit: function() {
             return true;
         },
+
         onSubmitted: function() {
             var numberOfIncorrectAnswers = this.model.get('_numberOfIncorrectAnswers');
             var attemptsLeft = this.model.get('_attemptsLeft');
             if (attemptsLeft !== 0 && numberOfIncorrectAnswers > 0)
                 this.$('.sentenceSequence').addClass('incorrect-resettable');
         },
+
         storeUserAnswer: function() {
             var listElements = this.$(".sentenceSequence"),
                 userAnswer = [],
@@ -165,6 +173,7 @@ define(function(require) {
                 return _.contains(items[index].position, id);
             }.bind(this));
         },
+
         isCorrect: function() {
             var userAnswer = this.getUserAnswer(),
                 items = this.model.get("_items"),

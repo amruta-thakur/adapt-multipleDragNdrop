@@ -1,7 +1,8 @@
-define(function(require) {
-    var Utils = require('components/adapt-multipleDragNdrop/js/utils/utils');
-    var QuestionView = require('coreViews/questionView');
-    var Adapt = require('coreJS/adapt');
+define([
+    'coreJS/adapt',
+    'coreViews/questionView',
+    'components/adapt-multipleDragNdrop/js/utils/utils'
+], function(Adapt, QuestionView, Utils) {
     var TextPictureMatching = Utils.extend({
 
         getDropedItemIdForCoordinate: function(top, left) {
@@ -58,7 +59,6 @@ define(function(require) {
             droppableItems[currentDropIndex]._selectedItemId = currentDragedItemId;
         },
         showMarking: function() {
-            console.log("showmarking")
             _.each(this.model.get('_droppableItems'), function(item, i) {
 
                 var $item = this.$('.droppable-item').eq(i);
@@ -71,7 +71,6 @@ define(function(require) {
             var $draggableItem = this.$('.draggable-item[data-id=' + draggableItemId + ']');
 
             var $existingDragItem = $droppableItemContainer.find('.draggable-item');
-            console.log($existingDragItem)
             if ($existingDragItem.length > 0) {
                 $draggableItem.closest('div').html($existingDragItem);
             }

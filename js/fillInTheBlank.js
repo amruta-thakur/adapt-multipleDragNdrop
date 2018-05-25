@@ -1,35 +1,36 @@
-define(function(require) {
-    var Utils = require('components/adapt-multipleDragNdrop/js/utils/utils');
-    var QuestionView = require('coreViews/questionView');
-    var Adapt = require('coreJS/adapt');
+define([
+    'coreJS/adapt',
+    'coreViews/questionView',
+    'components/adapt-multipleDragNdrop/js/utils/utils'
+], function(Adapt, QuestionView, Utils) {
+
     var FillInTheBlank = Utils.extend({
-        
+
         // should be used instead of preRender
         setupQuestion: function() {
             var items = this.model.get("_items");
-            var droppables,draggables;
-            //this.listenTo(Adapt, 'device:changed', this.deviceHasChanged, this);
+            var droppables, draggables;
             this.setupRandomisationForDraggables();
-            _.each(items, function(item,index){
+            _.each(items, function(item, index) {
                 droppables = item.suffix;
                 draggables = item.dragItems;
-                this.model.set("_droppableItems",droppables);
-                this.model.set("_draggableItems",draggables);
-            },this);
+                this.model.set("_droppableItems", droppables);
+                this.model.set("_draggableItems", draggables);
+            }, this);
 
-            if(this.model.get("_shouldScale")) {
+            if (this.model.get("_shouldScale")) {
                 this.listenTo(Adapt, 'device:resize', this.resizeItems, 200);
             }
-            Utils.prototype.setupQuestionItemIndexes.apply(this,arguments);
-            Utils.prototype.restoreUserAnswers.apply(this,arguments);
+            Utils.prototype.setupQuestionItemIndexes.apply(this, arguments);
+            Utils.prototype.restoreUserAnswers.apply(this, arguments);
         },
 
-        setupRandomisationForDraggables:function(){
+        setupRandomisationForDraggables: function() {
             var items = this.model.get("_items");
             if (this.model.get('_isRandom') && this.model.get('_isEnabled')) {
-                 _.each(items, function(item,index){
+                _.each(items, function(item, index) {
                     item.dragItems = _.shuffle(item.dragItems);
-                 });
+                });
             }
         },
 
@@ -39,7 +40,7 @@ define(function(require) {
             var droppedItemId;
 
             _.each(this.$('.droppable-item'), function(item, index) {
-                var $item =$(item);
+                var $item = $(item);
                 var itemTop = $item.offset().top;
                 var itemLeft = $item.offset().left;
                 var itemBottom = itemTop + defaultHeight;
@@ -60,7 +61,7 @@ define(function(require) {
             var $currentDragedItem = this.$('[data-id=' + currentDragedItemId + ']');
             var $currentDragedItemContainer = $currentDragedItem.parent('div');
 
-            if($currentDragedItemContainer.length != 1){
+            if ($currentDragedItemContainer.length != 1) {
                 $currentDragedItemContainer = $currentDragedItem.closest('div');
             }
             var $existingDragItem = $currentDropContainer.find('.draggable-item');
@@ -100,15 +101,13 @@ define(function(require) {
         },
 
         resizeItems: function() {
-            //var totalItems = this.model.get('_draggableItems').length;
             var draggableItemWidth = this.$('.fillInTheBlank-item-container.droppable-item-container').width();
             var draggableItemHeight = this.$('.fillInTheBlank-draggable-item.draggable-item').height();
             var droppableItemHeight = this.$('.fillInTheBlank-container.droppable-container').height();
-            var width = this.$('.'+this.model.get('_dragAndDropType')+'-inner').width();
-            var scale = width /(draggableItemWidth+20);
-            //var scale = 0.8;
-            console.log(draggableItemWidth,width+3,scale);
-            if(scale > 1) {
+            var width = this.$('.' + this.model.get('_dragAndDropType') + '-inner').width();
+            var scale = width / (draggableItemWidth + 20);
+
+            if (scale > 1) {
                 scale = 1;
             }
             var $dragContainers = this.$('.draggable-container, .droppable-container');
@@ -124,12 +123,12 @@ define(function(require) {
                 '-webkit-transform-origin': '0 0',
                 'transform-origin': '0 0'
             });
-            this.$('.fillInTheBlank-container.draggable-container').height((draggableItemHeight * scale)*2);
+            this.$('.fillInTheBlank-container.draggable-container').height((draggableItemHeight * scale) * 2);
             this.$('.fillInTheBlank-container.droppable-container').height((droppableItemHeight * scale));
-            this.$('.'+this.model.get('_dragAndDropType')+'-widget').width(draggableItemWidth);
+            this.$('.' + this.model.get('_dragAndDropType') + '-widget').width(draggableItemWidth);
             this.scale = scale;
         },
-        
+
         showMarking: function() {
             _.each(this.model.get('_droppableItems'), function(item, i) {
                 var $item = this.$('.droppable-item').eq(i);
@@ -137,24 +136,20 @@ define(function(require) {
             }, this);
         },
 
-        deviceHasChanged:function(){
-            var suffix,$prefix;
+        deviceHasChanged: function() {
+            var suffix, $prefix;
             if (Adapt.device.screenSize == 'small') {
-                _.each(this.model.get('_items'),function(item){
+                _.each(this.model.get('_items'), function(item) {
                     suffix = item.suffix;
-                    _.each(suffix,function(s){
-                        //console.log(s.id);
-                        console.log(this.$("#"+s.id));
-                        this.$("#"+s.id).after('<br>');
-                        //$prefix.prepend('<br>');
-                        //console.log(this.$("#"+s.id));
-                    },this);
+                    _.each(suffix, function(s) {
+                        this.$("#" + s.id).after('<br>');
+                    }, this);
 
-                },this);
+                }, this);
             }
         }
     });
-   
+
     Adapt.register("fillInTheBlank", FillInTheBlank);
     return FillInTheBlank;
 });
